@@ -1,0 +1,20 @@
+---
+
+- name: do stuff
+  hosts: local
+  vars:
+    demo_var: true
+  vars_files:
+    - vars/demo_vars.yml
+  vars_prompt:
+    - name: demo_var_from_prompt
+      prompt: enter anything you want
+  tasks:
+    - name: a task
+      command: whoami
+    - name: a task with items
+      command: echo {{item|string|quote}}
+      with_items:
+        - '{{demo_var}}'
+        - '{{demo_var_from_file}}'
+        - '{{demo_var_from_prompt}}'

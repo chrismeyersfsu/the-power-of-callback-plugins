@@ -1,0 +1,9 @@
+[all]
+
+[local]
+me
+myself
+i
+
+[local:vars]
+ansible_connection=local
