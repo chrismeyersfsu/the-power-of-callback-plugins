@@ -6,12 +6,19 @@
     demo_var: true
   vars_files:
     - vars/demo_vars.yml
-  vars_prompt:
-    - name: demo_var_from_prompt
-      prompt: enter anything you want
+  #vars_prompt:
+  #  - name: demo_var_from_prompt
+  #    prompt: enter anything you want
   tasks:
+    - name: not used
+      debug: var={{item}}
+      when: false
+      with_items:
+        - v2_runner_on_no_hosts
+
     - name: a task
-      command: whoami
+      command: uptime
+      changed_when: false
     - name: a task with items
       command: echo {{item|string|quote}}
       with_items:

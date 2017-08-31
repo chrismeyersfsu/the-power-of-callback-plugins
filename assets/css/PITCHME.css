@@ -1,3 +1,22 @@
+.reveal .slides {
+  text-align: left;
+  outline: 1px dotted red; /* Only for debugging slide bounds. */
+}
+.reveal .slides img {
+  text-align: center;
+}
+.reveal .slides img.meme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 20%;
+  height: auto;
+  border: none;
+  box-shadow: none;
+  border-radius: 8px;
+  margin: 8px;
+}
+
 .reveal h3, .reveal h4, .reveal h5 {
   font-family: monospace;
   text-transform: none;
@@ -13,4 +32,8 @@
 .reveal h3 .yaml-dash {
   margin-left: -1.15em;
   margin-right: .575em;
+}
+.reveal h4 .yaml-dash {
+  margin-left: -1.08em;
+  margin-right: 0.48em;
 }

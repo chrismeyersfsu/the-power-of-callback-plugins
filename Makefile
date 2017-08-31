@@ -1,4 +1,5 @@
-.PHONY: core-requirements update-pip-requirements requirements demo
+.PHONY: core-requirements update-pip-requirements requirements demo offline \
+	offline-edit offline-clean
 
 core-requirements:
 	pip install pip setuptools pip-tools
@@ -12,6 +13,24 @@ requirements: core-requirements
 
 demo: requirements
 	ansible-playbook -i inventory demo.yml
+
+PITCHME.zip:
+	wget https://gitpitch.com/pitchme/offline/github/cchurch/the-power-of-callback-plugins/`git rev-parse --abbrev-ref HEAD`/white/PITCHME.zip
+
+PITCHME/index.html: PITCHME.zip
+	test -f PITCHME/index.html || unzip -o PITCHME.zip
+
+PITCHME/assets/md/README.md: PITCHME/index.html
+	test -L PITCHME/assets/md || (rm -rf PITCHME/assets/md && ln -s ../.. PITCHME/assets/md)	
+
+offline: PITCHME/index.html
+	cd PITCHME && python -m SimpleHTTPServer 8059
+
+offline-edit: PITCHME/assets/md/README.md
+	cd PITCHME && python -m SimpleHTTPServer 8059
+
+offline-clean:
+	@rm -rf PITCHME PITCHME.zip
 
 #galaxy-requirements: requirements
 #	ansible-galaxy install -f -p tests/roles -r tests/roles/requirements.yml
