@@ -33,6 +33,13 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.reveal .slides pre code {
+  color: #c5c8c6;
+  background: #1d1f21;
+}
+.reveal .slides sup {
+  font-size: 0.5em;
+}
 
 .reveal h3, .reveal h4, .reveal h5, .reveal p, .reveal ul, .reveal ul li {
   font-family: monospace;

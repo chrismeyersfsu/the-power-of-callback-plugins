@@ -127,6 +127,7 @@ class CallbackModule(CallbackBase):
         self.event_context.pop('task_role', None)
 
     def v2_playbook_on_start(self, playbook):
+        print(playbook, type(playbook))
         self.set_playbook(playbook)
         self.capture_event_data('v2_playbook_on_start')
 
@@ -146,6 +147,15 @@ class CallbackModule(CallbackBase):
         self.capture_event_data('v2_playbook_on_vars_prompt', event_data)
 
     def v2_playbook_on_include(self, included_file):
+        print('included_file=', included_file)
+        try:
+            filename = included_file._filename
+            args = included_file._args
+            task = included_file._task
+            hosts = included_file._hosts
+            print(filename, args, task, hosts)
+        except AttributeError:
+            pass
         event_data = collections.OrderedDict([
             ('included_file', included_file._filename if included_file is not None else None),
         ])

@@ -1,0 +1,10 @@
+---
+
+# Will NOT trigger v2_playbook_on_include callback!
+
+- name: included play
+  hosts: local
+  gather_facts: false
+  tasks:
+    - name: ping from included play
+      action: ping

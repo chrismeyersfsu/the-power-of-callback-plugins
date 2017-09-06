@@ -1,0 +1,4 @@
+---
+
+- name: task from included file within role
+  action: ping

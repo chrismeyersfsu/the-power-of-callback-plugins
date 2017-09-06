@@ -2,3 +2,6 @@
 
 - name: demo task within a role
   command: uname -a
+
+- name: included file within a role
+  include: included.yml

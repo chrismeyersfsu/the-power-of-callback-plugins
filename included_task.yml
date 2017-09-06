@@ -1,0 +1,6 @@
+---
+
+# Will trigger v2_playbook_on_include callback!
+
+- name: ping from included task
+  action: ping

@@ -356,84 +356,249 @@ callback_whitelist=timer,tree
 
 +++
 
-### <span class="yaml-dash">-</span>name: Once Per Playbook
+<div><img src="./assets/md/assets/img/playbook-start.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Per Playbook
 #### `debug: var=v2_playbook_on_start`
 
-```python
-    def v2_playbook_on_start(self, playbook):
-        filename = getattr(playbook, '_file_name', '???')
-```
-
-<div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=v2_playbook_on_start_stdout</h4>
-<pre><code class="hljs"></code></pre>
-</div>
-
-<div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=v2_runner_on_ok</h4>
-<pre><code class="lang-python hljs">    def v2_playbook_on_start(self, playbook):
-        filename = getattr(playbook, '_file_name', '???')
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">def v2_playbook_on_start(self, playbook):
+    self.playbook = playbook
+    filename = getattr(playbook, '_file_name', '???')
+    plays = playbook.get_plays()
 </code></pre>
 </div>
 
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=playbook</h4>
+<pre><code class="nohighlight">&lt;ansible.playbook.Playbook object&gt;
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=playbook_stdout (-vv)</h4>
+<pre><code class="nohighlight">PLAYBOOK: demo.yml &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;
+1 plays in demo.yml
+</code></pre>
+</div>
 
 +++
 
-### <span class="yaml-dash">-</span>name: I Haz Questions
-#### debug:
-        msg: v2_playbook_on_vars_prompt(varname, private=True, prompt=None, encrypt=None, confirm=False, salt_size=None, salt=None, default=None)
+<div><img src="./assets/md/assets/img/playbook-on-vars-prompt.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Prompts
+#### debug: ><br/>&nbsp;&nbsp;var=`v2_playbook_on_vars_prompt`
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_vars_prompt(self,
+                               varname,
+                               private=True,
+                               prompt=None,
+                               encrypt=None,
+                               confirm=False,
+                               salt_size=None,
+                               salt=None,
+                               default=None):
+    pass
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>set_fact:<br/>&nbsp;&nbsp;called_before: display.do_var_prompt<br/>&nbsp;&nbsp;return_value: ignored<br/>&nbsp;&nbsp;override_possible: not really</h4>
+</div>
 
 +++
 
-### <span class="yaml-dash">-</span>name: Some Other Thing
-#### debug:
-        msg: v2_playbook_on_include(included_file) - included_file._filename
-        
-+++
+<div><img src="./assets/md/assets/img/playbook-include.gif" class="meme"/></div>
 
-### <span class="yaml-dash">-</span>name: Play Ball
-#### debug:
-        msg: v2_playbook_on_play_start(play) - play.hosts (str or list), play.get_name(), play._uuid
+### <span class="yaml-dash">-</span>name: Includes<sup>*</sup>
+#### debug: var=v2_playbook_on_include
 
-+++
+<div class="fragment" style="margin-top: 1.1em;">
+<pre><code class="python">def v2_playbook_on_include(self, included_file):
+    filename = included_file._filename
+    args = included_file._args
+    task = included_file._task
+    hosts = included_file._hosts
+</code></pre>
+</div>
 
-### <span class="yaml-dash">-</span>name: Task It
-#### debug:
-        msg: >
-          v2_playbook_on_task_start(task, is_conditional) - task._uuid,
-          task.get_name(), task.name, task.action, task.get_path(), task.no_log,
-          task.args, task._role._role_name or task.role_name
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=included_file</h4>
+<pre><code class="nohighlight">&lt;ansible.playbook.IncludedFile object&gt;
+</code></pre>
+</div>
 
-+++
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=include_stdout</h4>
+<pre><code class="nohighlight">included: file.yml for host</code></pre>
+</div>
 
-### <span class="yaml-dash">-</span>name: Handle It
-#### debug:
-        msg: v2_playbook_on_handler_task_start(task) ~= v2_playbook_on_task_start(task, True)
-
-+++
-
-### <span class="yaml-dash">-</span>name: No Hosts
-#### debug:
-        msg: v2_playbook_on_no_hosts_matched()
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>set_fact: actually_called=rarely<sup>*</sup><br/>when: tbd</h4>
+</div>
 
 +++
+
+<div><img src="./assets/md/assets/img/playbook-play.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Per Play
+#### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_play_start
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_play_start(self, play):
+    playbook = self.playbook
+    self.play = play
+    if isinstance(play.hosts, list):
+        pattern = ','.join(play.hosts)
+    else:
+        pattern = play.hosts
+    name = play.get_name().strip() or pattern
+    uuid = str(play._uuid)
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=play</h4>
+<pre><code class="nohighlight">&lt;ansible.playbook.Play object&gt;
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=play_stdout</h4>
+<pre><code class="nohighlight">PLAY [my play] &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/playbook-task.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Per Task
+#### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_task_start
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_task_start(self, task, is_conditional):
+    playbook, play = self.playbook, self.play
+    name, action = task.name or task.get_name(), task.action
+    path = task.get_path()
+    no_log = task.no_log
+    role = task._role._role_name if task._role else None
+    uuid = str(task._uuid)
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=task</h4>
+<pre><code class="nohighlight">&lt;ansible.playbook.Task object&gt;
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=task_stdout (-vv)</h4>
+<pre><code class="nohighlight">TASK [my task] &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;
+task path: demo.yml:9</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/playbook-handler.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Handlers
+#### debug: ><br/>&nbsp;&nbsp;var=`v2_playbook_on_handler_task_start`
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_handler_task_start(self, task):
+    self.v2_playbook_on_task_start(task, is_conditional=True)
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=handler_task_stdout (-vv)</h4>
+<pre><code class="nohighlight">RUNNING HANDLER [my handler] &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/no-hosts-matched.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: No Hosts Matched
+#### debug: ><br/><br/>&nbsp;&nbsp;var=`v2_playbook_on_no_hosts_matched`
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_no_hosts_matched(self):
+    playbook, play = self.playbook, self.play
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=no_hosts_matched_stdout</h4>
+<pre><code class="nohighlight">skipping: no hosts matched</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/no-hosts-remaining.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: No Hosts Remaining
-#### debug:
-        msg: v2_playbook_on_no_hosts_remaining
+#### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_no_hosts_remaining
+
+<div class="fragment">
+<pre><code class="python">def v2_playbook_on_no_hosts_remaining(self):
+    playbook, play = self.playbook, self.play
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=no_hosts_remaining_stdout</h4>
+<pre><code class="nohighlight">NO MORE HOSTS LEFT &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;</code></pre>
+</div>
 
 +++
 
-<img src="./assets/md/assets/img/playbook-stats.gif" class="meme"/>
+<div><img src="./assets/md/assets/img/playbook-stats.gif" class="meme"/></div>
 
-### <span class="yaml-dash">-</span>name: Statistically Speaking
-#### debug:
-        msg: v2_playbook_on_stats(stats) - stats.changed, stats.dark, stats.failures, stats.ok, stats.processed, stats.skipped, getattr(stats, 'custom', {})
+### <span class="yaml-dash">-</span>name: Stats
+#### debug: var=v2_playbook_on_stats
+
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">def v2_playbook_on_stats(self, stats):
+    playbook = self.playbook
+    changed = stats.changed
+    dark = stats.dark
+    failures = stats.failures
+    ok = stats.ok
+    processed = stats.processed
+    skipped = stats.skipped
+    custom = getattr(stats, 'custom', {})
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=stats.ok</h4>
+<pre><code class="python">{'host': 22}
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=stats_stdout</h4>
+<pre><code class="nohighlight">PLAY RECAP &#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;
+host    : ok=22    changed=4    unreachable=0    failed=0
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/playbook-never.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Never Called
+#### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_notify`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_cleanup_task_start`
 
 ---
 
+<div><img src="./assets/md/assets/img/runner-events.gif" class="meme"/></div>
+
 ### <span class="yaml-dash">-</span>name: Runner Events
-#### hosts: Callback Plugin Demo
+#### hosts: Demo Callback Plugin
 #### tasks: ...
 
 +++
@@ -512,10 +677,14 @@ callback_whitelist=timer,tree
 
 +++
 
+<div><img src="./assets/md/assets/img/runner-never.gif" class="meme"/></div>
+
 ### <span class="yaml-dash">-</span>name: Never Called
-#### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_notify`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_no_hosts_matched`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_cleanup_task_start`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_poll`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_ok`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_failed`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_file_diff`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_no_hosts`
+#### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_poll`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_ok`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_failed`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_file_diff`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_no_hosts`
 
 ---
+
+<div><img src="./assets/md/assets/img/what-about.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: What About?
 #### hosts: Demo Callback Plugin
@@ -526,12 +695,23 @@ callback_whitelist=timer,tree
 ### <span class="yaml-dash">-</span>name: Capturing Stdout
 #### debug: var=ansible.utils.display.Display
 
-```
-```
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">class Display:
+
+    def display(self, msg, color=None, stderr=False, screen_only=False, log_only=False):
+        ...
+
+    def verbose(self, msg, host=None, caplevel=2):
+        ...
+
+    def banner(self, msg, color=None, cows=True):
+        ...
+</code></pre>
+</div>
 
 +++
 
-<img src="./assets/md/assets/img/no-log.gif" class="meme"/>
+<div><img src="./assets/md/assets/img/no-log.gif" class="meme"/></div>
 
 
 ### <span class="yaml-dash">-</span>name: My ⨍®𝒾¢₭ℹ︎ℵ§ Passwords
@@ -540,7 +720,9 @@ callback_whitelist=timer,tree
 
 +++
 
-### <span class="yaml-dash">-</span>name: 
+### <span class="yaml-dash">-</span>name: On Task Stop
+
+
 
 ---
 
@@ -572,11 +754,17 @@ callback_whitelist=timer,tree
 # FIXME: Add verbosity for exception/results output.
 </code></pre>
 
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>set_fact: need_docs=true</h4>
+<blockquote style="width: 90%;">"This is what callback plugins are for, sadly we are 'low on docs' on
+this feature." @bcoca</blockquote>
+</div>
+
 +++
 
 <div><img src="./assets/md/assets/img/questions.gif" class="meme"/></div>
 
-### <span class="yaml-dash">-</span>name: Contact Me
+### <span class="yaml-dash">-</span>name: That's All!
 #### pause:<br/>&nbsp;&nbsp;prompt: Any questions?
 
 #### <!-- .element: class="fragment" --><span class="yaml-dash">-</span>set_fact:<br/>&nbsp;&nbsp;github: [@cchurch](https://github.com/cchurch)<br/>&nbsp;&nbsp;twitter: [@flyingfred0](https://twitter.com/flyingfred0)<br/>&nbsp;&nbsp;email: [cchurch@redhat.com](mailto:cchurch@redhat.com)

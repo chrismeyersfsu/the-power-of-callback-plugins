@@ -1,5 +1,10 @@
 ---
 
+- include: included_play.yml
+
+- name: no hosts match
+  hosts: none
+
 - name: do stuff
   hosts: local
   vars:
@@ -10,6 +15,8 @@
   #  - name: demo_var_from_prompt
   #    prompt: enter anything you want
   pre_tasks:
+    - name: include tasks from another file
+      include: included_task.yml
     - name: not used
       debug: var={{item}}
       when: false
@@ -19,12 +26,17 @@
     - name: a task
       command: uptime
       changed_when: false
+    - name: a task that triggers a handler
+      command: uname -a
+      notify: demo handler
     - name: a task with items
       command: echo {{item|string|quote}}
       with_items:
         - '{{demo_var}}'
         - '{{demo_var_from_file}}'
-        - '{{demo_var_from_prompt}}'
+        #- '{{demo_var_from_prompt}}'
   roles:
     - role: demo
-
+  handlers:
+    - name: demo handler
+      action: ping
