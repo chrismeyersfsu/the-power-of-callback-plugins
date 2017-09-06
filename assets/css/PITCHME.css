@@ -16,12 +16,31 @@
   border-radius: 8px;
   margin: 8px;
 }
+.reveal .slides iframe {
+  width: 1280px;
+  height: 656px;
+  max-width: none;
+  max-height: none;
+  -ms-zoom: 0.75;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.75);
+  -webkit-transform-origin: 0 0;
+  background-color: #5e6e71;
+  background-image: url(./assets/md/assets/img/loading-cat.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-.reveal h3, .reveal h4, .reveal h5 {
+.reveal h3, .reveal h4, .reveal h5, .reveal p, .reveal ul, .reveal ul li {
   font-family: monospace;
   text-transform: none;
   text-align: left;
   white-space: nowrap;
+  line-height: 1.2em;
+  margin-bottom: 16px;
 }
 .reveal h3 {
   font-size: 1.15em;
@@ -36,4 +55,14 @@
 .reveal h4 .yaml-dash {
   margin-left: -1.08em;
   margin-right: 0.48em;
+}
+.reveal p, .reveal ul, .reveal ul li {
+  line-height: 30px;
+  font-size: 30px;
+}
+.reveal p {
+  line-height: 36px;
+}
+.reveal ul li {
+  line-height: 28px;
 }

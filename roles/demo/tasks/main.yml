@@ -1,0 +1,4 @@
+---
+
+- name: demo task within a role
+  command: uname -a

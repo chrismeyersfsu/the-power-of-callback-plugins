@@ -42,7 +42,7 @@ Note:
 #### hosts: Ansible Tower
 #### tasks: ...
 
-<img src="./assets/md/assets/img/awx-logo.svg" style="border: none; box-shadow: none; width: 50%;"/>
+<!--  <img src="./assets/md/assets/img/awx-logo.svg" style="border: none; box-shadow: none; width: 50%;"/> -->
 
 Note:
 
@@ -51,27 +51,27 @@ Note:
 <img src="./assets/md/assets/img/templates-ui.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Templates UI
-#### `get_url`: <br/>&nbsp;&nbsp;url: tower/#/templates/job_template/N
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/templates/job_template/N](https://tower/#/templates/job_template/1)
 
-<img src="" alt="Job Templates UI Image"/>
+<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/#/templates/job_template/80"></iframe>
 
 +++
 
 <img src="./assets/md/assets/img/templates-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Templates API
-#### `get_url`: <br/>&nbsp;&nbsp;url: tower/api/v1/job_templates/N/
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/job_templates/N/](https://tower/api/v1/job_templates/1/)
 
-<img src="" alt="Job Templates API Image"/>
-
-<!-- <iframe src="https://tower.testing.ansible.com/" width="400" height="300">FIXME</iframe> -->
+<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/job_templates/80/"></iframe>
 
 +++
 
-### <span class="yaml-dash">-</span>name: Ansible Playbook Options
+<img src="./assets/md/assets/img/ansible-help.gif" class="meme"/>
+
+### <span class="yaml-dash">-</span>name: Playbook Options
 #### command: ansible-playbook --help
 
-```
+<pre class="fragment" style="font-size: 0.4em; margin-top: 5em;"><code class="console">
 Usage: ansible-playbook playbook.yml
 
 Options:
@@ -140,123 +140,218 @@ Options:
   -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
                         connection debugging)
   --version             show program's version number and exit
-```
+</code></pre>
 
 +++
 
 <img src="./assets/md/assets/img/launch-job.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Launch a Job
-#### `get_url`: <br/>&nbsp;&nbsp;url: tower/#/jobs/N
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/jobs/N](https://tower/#/jobs/1)
 
-<img src="" alt="Job Launch UI Image"/>
+<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/#/templates?template_search=id__icontains_DEFAULT:80"></iframe>
 
 +++
 
 <img src="./assets/md/assets/img/jobs-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Jobs API
-#### `get_url`: <br/>&nbsp;&nbsp;url: tower/api/v1/jobs/N/
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/](https://tower/api/v1/jobs/1/)
 
-<img src="" alt="Job API Image"/>
+<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/jobs/?order_by=-id"></iframe>
 
 +++
 
 <img src="./assets/md/assets/img/job-events-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Events API
-#### `get_url`: <br/>&nbsp;&nbsp;url: tower/api/v1/jobs/N/job_events/
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/job_events/](https://tower/api/v1/jobs/1/job_events/)
 
-<img src="" alt="Job Events API Image"/>
+<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/jobs/?order_by=-id"></iframe>
 
 ---
 
-### <span class="yaml-dash">-</span>name: What **IS** a Callback Plugin?
+<img src="./assets/md/assets/img/what-is.gif" class="meme" style="top: 100px;"/>
+
+### <span class="yaml-dash">-</span>name: What *IS* a Callback Plugin?
 #### hosts: Ansible Core
 #### tasks: ...
 
 +++
 
-### <span class="yaml-dash">-</span>name: All the plugins
-#### command: ls ansible/plugins/
+<img src="./assets/md/assets/img/plugins.gif" class="meme"/>
 
-- action
-- cache
-- **callback**
-- connection
-- filter
-- lookup
-- shell
-- strategy
-- terminal
-- test
-- vars
+### <span class="yaml-dash">-</span>name: One of Many Plugins
+#### command: ><br/>&nbsp;&nbsp;find -type d lib/ansible/plugins/
 
-- modules
-- module_utils
-- module_doc_fragments
+<div style="position: relative;">
+<pre class="fragment current-visible" style="position: absolute;"><code class="ini">action
+cache
+callback
+connection
+filter
+lookup
+shell
+strategy
+terminal
+test
+vars
+</code></pre>
 
+<div class="fragment current-visible" style="position: absolute;">
+<p>Also Plugins:</p>
+<ul>
+  <li>modules</li>
+  <li>module_utils</li>
+  <li>module_doc_fragments</li>
+</ul>
+</div>
+
+<div class="fragment current-visible" style="position: absolute;">
+<p>More in 2.4:</p>
+<ul>
+  <li>cliconf</li>
+  <li>inventory</li>
+  <li>netconf</li>
+</ul>
+</div>
+
+</div>
 
 +++
+
+<img src="./assets/md/assets/img/callback-base.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: CallbackBase
 #### debug:<br/>&nbsp;&nbsp;var: ansible.plugins.callback.CallbackBase
 
-```python
-class CallbackBase:
+<pre class="fragment"><code class="python hljs">class CallbackBase:
 
     CALLBACK_VERSION: '2.0'
-    CALLBACK_TYPE: 'stdout'
+    CALLBACK_TYPE: 'notification'
     CALLBACK_NAME: 'myplugin'
     CALLBACK_NEEDS_WHITELIST: True
 
-```
+</code><code class="fragment python hljs">    def v2_on_any(self, *args, **kwargs):
+        pass
+</code></pre>
+
 +++
+
+<img src="./assets/md/assets/img/callback-type.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: CALLBACK_TYPE
 #### debug:<br/>&nbsp;&nbsp;var: CallbackBase.CALLBACK_TYPE
 
-- `stdout`: Only one
-- `notification`: 
-- `aggregate`
+<ul class="fragment" style="margin-top: 1em;">
+  <li><b>stdout</b>: Only one</li>
+  <li><b>notification</b>: Zero or more, may be whitelisted</li>
+  <li><b>aggregate</b>: Zero or more, may be whitelisted</li>
+</ul>
 
 +++
 
-### <span class="yaml-dash">-</span>name: Loaded when
-#### debug: var=run_when
+<div><img src="./assets/md/assets/img/built-in.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Built-In Callbacks
+#### command: ><br/>&nbsp;&nbsp;ls lib/ansible/plugins/callback/*.py
+
+<div style="position: relative;">
+
+<div class="fragment current-visible" style="position: absolute; width: 100%;">
+<p>Stdout:</p>
+<pre><code class="ini">default (ansible-playbook)
+minimal (ansible, ansible-console)
+actionable
+debug
+dense
+fullskip
+json
+oneline
+selective
+skippy
+stderr
+</code></pre>
+</div>
+
+<div class="fragment current-visible" style="position: absolute;; width: 100%;">
+<p>Notification:</p>
+<pre><code class="ini">foreman
+hipchat
+jabber
+log_plays
+logentries
+mail
+osx_say
+slack
+</code></pre>
+</div>
+
+<div class="fragment current-visible" style="position: absolute;; width: 100%;">
+<p>Aggregate:</p>
+<pre><code class="ini">context_demo
+junit
+logstash
+profile_roles
+profile_tasks
+syslog_json
+timer
+tree
+</code></pre>
+</div>
+
+</div>
 
 +++
 
-### <span class="yaml-dash">-</span>name: Batteries Included
-#### command: ls ansible/plugins/callback/*.py
-
-- Default Stdout  <!-- .element: class="fragment " -->
-    - `default` (`ansible_playbook`)
-    - `minimal` (`ansible`)
-- Other Stdout <!-- .element: class="fragment fade-up" -->
-    - `actionable`
-    - `debug`
-    - `dense`
-    - `json`
-    - ...
-- Notification <!-- .element: class="fragment" -->
-    - `context_demo`
-- Aggregagte <!-- .element: class="fragment" -->
-
-+++
-
+<div><img src="./assets/md/assets/img/bring-your-own.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Bring Your Own
-#### set_fact:
+#### debug: var=callback_plugins
 
-        where: '{{role_dir}}/callback_plugins'
-        where: '{{playbook_dir}}/callback_plugins'
-        
+<div class="fragment">
+<p>Playbooks and Roles:</p>
+<pre><code class="jinja">{{playbook_dir}}/callback_plugins
+{{role_dir}}/callback_plugins
+</code></pre>
+</div>
+
+<div class="fragment">
+<p>ANSIBLE_CALLBACK_PLUGINS or ansible.cfg:</p>
+
+<pre><code class="ini">[defaults]
+callback_plugins=~/.ansible/plugins/callback:/usr/share/ansible/plugins/callback
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/md/assets/img/loaded-when.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Loaded When?
+#### debug: msg='Callback Loaded'<br/>when: CALLBACK_TYPE == 'stdout'
+
+<div class="fragment">
+<p>ANSIBLE_STDOUT_CALLBACK or ansible.cfg:</p>
+<pre><code class="ini">[defaults]
+stdout_callback=default
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: msg='Callback Loaded'<br/>when: CALLBACK_TYPE != 'stdout'</h4>
+<p>CALLBACK_NEEDS_WHITELIST == False or<br/>ANSIBLE_CALLBACK_WHITELIST or ansible.cfg:</p>
+<pre><code class="ini">[defaults]
+callback_whitelist=timer,tree
+</code></pre>
+</div>
 
 ---
 
+<div><img src="./assets/md/assets/img/playbooks-plays-tasks.gif" class="meme" style="top: 100px;"/></div>
+
 ### <span class="yaml-dash">-</span>name: Playbooks, Plays & Tasks
-#### hosts: Callback Plugin Demo
+#### hosts: Demo Callback Plugin
 #### tasks: ...
 
 +++
@@ -268,6 +363,19 @@ class CallbackBase:
     def v2_playbook_on_start(self, playbook):
         filename = getattr(playbook, '_file_name', '???')
 ```
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=v2_playbook_on_start_stdout</h4>
+<pre><code class="hljs"></code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=v2_runner_on_ok</h4>
+<pre><code class="lang-python hljs">    def v2_playbook_on_start(self, playbook):
+        filename = getattr(playbook, '_file_name', '???')
+</code></pre>
+</div>
+
 
 +++
 
@@ -404,29 +512,72 @@ class CallbackBase:
 
 +++
 
-### <span class="yaml-dash">-</span>name: Never Used
-#### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_on_file_diff`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_no_hosts`
+### <span class="yaml-dash">-</span>name: Never Called
+#### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_notify`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_no_hosts_matched`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_cleanup_task_start`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_poll`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_ok`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_failed`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_file_diff`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_no_hosts`
 
 ---
 
-### <span class="yaml-dash">-</span>name: What About...
-#### hosts: Callback Plugin Demo
+### <span class="yaml-dash">-</span>name: What About?
+#### hosts: Demo Callback Plugin
 #### tasks: ...
 
 +++
 
 ### <span class="yaml-dash">-</span>name: Capturing Stdout
+#### debug: var=ansible.utils.display.Display
+
+```
+```
 
 +++
 
 <img src="./assets/md/assets/img/no-log.gif" class="meme"/>
 
 
-### <span class="yaml-dash">-</span>name: My ⨍µ¢₭ℹ︎ℵ§ Passwords
+### <span class="yaml-dash">-</span>name: My ⨍®𝒾¢₭ℹ︎ℵ§ Passwords
 
+
+
++++
+
+### <span class="yaml-dash">-</span>name: 
 
 ---
 
-### <span class="yaml-dash">-</span>name: And Then
+<div><img src="./assets/md/assets/img/what-next.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: What Next?
 #### hosts: You
 #### tasks: ...
+
++++
+
+### <span class="yaml-dash">-</span>name: AWX
+#### get_url:<br/>&nbsp;&nbsp;url: [github.com/ansible/awx](https://github.com/ansible/awx)
+
+#### <!-- .element: class="fragment" --><span class="yaml-dash">-</span>set_fact:<br/>&nbsp;&nbsp;google_group: [awx-project](https://groups.google.com/d/forum/awx-project)<br/>&nbsp;&nbsp;freenode_irc: [ansible-awx](irc://irc.freenode.net/ansible-awx)
+
++++
+
+<div><img src="./assets/md/assets/img/fixme.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: FIXME
+#### command: ><br>&nbsp;&nbsp;grep -hir fixme<br/>&nbsp;&nbsp;awx/lib/awx_display_callback/
+
+<pre class="fragment" style="margin-top: 2em;"><code class="python"># FIXME: Task is "global" unless using free strategy!
+# FIXME: Flag task path output as vv.
+# FIXME: When this task UUID repeats, it means the play is using the free strategy...
+# FIXME: Add count of plays/tasks.
+# FIXME: Display detailed results or not based on verbosity.
+# FIXME: Add verbosity for exception/results output.
+</code></pre>
+
++++
+
+<div><img src="./assets/md/assets/img/questions.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Contact Me
+#### pause:<br/>&nbsp;&nbsp;prompt: Any questions?
+
+#### <!-- .element: class="fragment" --><span class="yaml-dash">-</span>set_fact:<br/>&nbsp;&nbsp;github: [@cchurch](https://github.com/cchurch)<br/>&nbsp;&nbsp;twitter: [@flyingfred0](https://twitter.com/flyingfred0)<br/>&nbsp;&nbsp;email: [cchurch@redhat.com](mailto:cchurch@redhat.com)
+#### <!-- .element: class="fragment" --><span class="yaml-dash">-</span>get_url:<br/>&nbsp;&nbsp;url: [cchurch/the-power-of-callback-plugins](https://github.com/cchurch/the-power-of-callback-plugins)

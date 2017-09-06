@@ -9,7 +9,7 @@
   #vars_prompt:
   #  - name: demo_var_from_prompt
   #    prompt: enter anything you want
-  tasks:
+  pre_tasks:
     - name: not used
       debug: var={{item}}
       when: false
@@ -25,3 +25,6 @@
         - '{{demo_var}}'
         - '{{demo_var_from_file}}'
         - '{{demo_var_from_prompt}}'
+  roles:
+    - role: demo
+
