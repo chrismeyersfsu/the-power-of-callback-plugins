@@ -70,7 +70,7 @@ class CallbackModule(CallbackBase):
                     event_data['res']['results'][i] = {'censored': 'CENSORED'}
 
         # FIXME!
-        print(new_event_data)
+        print(event, new_event_data)
         self.yaml_safe_dump([dict(event=event, event_data=new_event_data)],
                             self.event_output)
 
@@ -218,12 +218,12 @@ class CallbackModule(CallbackBase):
             ok=stats.ok,
             processed=stats.processed,
             skipped=stats.skipped,
-            artifact_data=stats.custom.get('_run', {}) if hasattr(stats, 'custom') else {}
+            custom=stats.custom.get('_run', {}) if hasattr(stats, 'custom') else {}
         )
-
         self.capture_event_data('v2_playbook_on_stats', event_data)
 
     def v2_runner_on_ok(self, result):
+        print(json.dumps(result._result, indent=4, sort_keys=True))
         # FIXME: Display detailed results or not based on verbosity.
 
         # strip environment vars from the job event; it already exists on the

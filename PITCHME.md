@@ -1,6 +1,6 @@
 <!-- .element: class="x" -->
 
-<img src="./assets/md/assets/img/callback-boy.gif" class="meme"/>
+<img src="./assets/gifs/callback-boy.gif" class="meme"/>
 
 
 <pre style="box-shadow: none; font-weight: bold; padding: 0 20%;">
@@ -23,32 +23,32 @@ Do I need a note?
 
 +++
 
-<img src="./assets/md/assets/img/who-dis.gif" class="meme"/>
+<img src="./assets/gifs/who-dis.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Who Dis?
 #### set_fact:
 #### <!-- .element: class="fragment" -->&nbsp;&nbsp;`tower_api_developer`: > <br/> &nbsp;&nbsp;&nbsp;&nbsp;[Since March 2013](https://github.com/ansible/awx/commit/a61a3538291812de5032bc383e662c000e33741e)
 #### <!-- .element: class="fragment" -->&nbsp;&nbsp;`tower_callback_plugin`: > <br/> &nbsp;&nbsp;&nbsp;&nbsp;[~90% of current implementation](https://github.com/ansible/awx/blame/c7a85d9738a1e7ddd52a65968766800ed8c34d12/awx/lib/tower_display_callback/module.py)
 #### <!-- .element: class="fragment" -->&nbsp;&nbsp;`ansible_winning: >` <br/> &nbsp;&nbsp;&nbsp;&nbsp;[github.com/cchurch/ansible-winning](https://github.com/cchurch/ansible-winning)
-#### <!-- .element: class="fragment" --><img src="./assets/md/assets/img/ansible-sign.gif" style="position: absolute; top: 145px; right: -35px; clip: rect(45px,230px,235px,35px);"/>&nbsp;&nbsp;`ansible_sign: >` <br/> &nbsp;&nbsp;&nbsp;&nbsp;[github.com/cchurch/ansible-sign](https://github.com/cchurch/ansible-sign)
+#### <!-- .element: class="fragment" --><img src="./assets/gifs/ansible-sign.gif" style="position: absolute; top: 145px; right: -35px; clip: rect(45px,230px,235px,35px);"/>&nbsp;&nbsp;`ansible_sign: >` <br/> &nbsp;&nbsp;&nbsp;&nbsp;[github.com/cchurch/ansible-sign](https://github.com/cchurch/ansible-sign)
 
 Note:
 
 ---
 
-<img src="./assets/md/assets/img/tower-fall.gif" class="meme"/>
+<img src="./assets/gifs/tower-fall.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: How Tower Runs a Job
 #### hosts: Ansible Tower
 #### tasks: ...
 
-<!--  <img src="./assets/md/assets/img/awx-logo.svg" style="border: none; box-shadow: none; width: 50%;"/> -->
+<!--  <img src="./assets/gifs/awx-logo.svg" style="border: none; box-shadow: none; width: 50%;"/> -->
 
 Note:
 
 +++
 
-<img src="./assets/md/assets/img/templates-ui.gif" class="meme"/>
+<img src="./assets/gifs/templates-ui.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Templates UI
 #### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/templates/job_template/N](https://tower/#/templates/job_template/1)
@@ -57,7 +57,7 @@ Note:
 
 +++
 
-<img src="./assets/md/assets/img/templates-api.gif" class="meme"/>
+<img src="./assets/gifs/templates-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Templates API
 #### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/job_templates/N/](https://tower/api/v1/job_templates/1/)
@@ -66,7 +66,7 @@ Note:
 
 +++
 
-<img src="./assets/md/assets/img/ansible-help.gif" class="meme"/>
+<img src="./assets/gifs/ansible-help.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Playbook Options
 #### command: ansible-playbook --help
@@ -144,7 +144,7 @@ Options:
 
 +++
 
-<img src="./assets/md/assets/img/launch-job.gif" class="meme"/>
+<img src="./assets/gifs/launch-job.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Launch a Job
 #### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/jobs/N](https://tower/#/jobs/1)
@@ -153,7 +153,7 @@ Options:
 
 +++
 
-<img src="./assets/md/assets/img/jobs-api.gif" class="meme"/>
+<img src="./assets/gifs/jobs-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Jobs API
 #### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/](https://tower/api/v1/jobs/1/)
@@ -162,7 +162,7 @@ Options:
 
 +++
 
-<img src="./assets/md/assets/img/job-events-api.gif" class="meme"/>
+<img src="./assets/gifs/job-events-api.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Job Events API
 #### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/job_events/](https://tower/api/v1/jobs/1/job_events/)
@@ -171,7 +171,7 @@ Options:
 
 ---
 
-<img src="./assets/md/assets/img/what-is.gif" class="meme" style="top: 100px;"/>
+<img src="./assets/gifs/what-is.gif" class="meme" style="top: 100px;"/>
 
 ### <span class="yaml-dash">-</span>name: What *IS* a Callback Plugin?
 #### hosts: Ansible Core
@@ -179,7 +179,7 @@ Options:
 
 +++
 
-<img src="./assets/md/assets/img/plugins.gif" class="meme"/>
+<img src="./assets/gifs/plugins.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: One of Many Plugins
 #### command: ><br/>&nbsp;&nbsp;find -type d lib/ansible/plugins/
@@ -220,7 +220,7 @@ vars
 
 +++
 
-<img src="./assets/md/assets/img/callback-base.gif" class="meme"/>
+<img src="./assets/gifs/callback-base.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: CallbackBase
 #### debug:<br/>&nbsp;&nbsp;var: ansible.plugins.callback.CallbackBase
@@ -238,7 +238,7 @@ vars
 
 +++
 
-<img src="./assets/md/assets/img/callback-type.gif" class="meme"/>
+<img src="./assets/gifs/callback-type.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: CALLBACK_TYPE
 #### debug:<br/>&nbsp;&nbsp;var: CallbackBase.CALLBACK_TYPE
@@ -251,7 +251,7 @@ vars
 
 +++
 
-<div><img src="./assets/md/assets/img/built-in.gif" class="meme"/></div>
+<div><img src="./assets/gifs/built-in.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Built-In Callbacks
 #### command: ><br/>&nbsp;&nbsp;ls lib/ansible/plugins/callback/*.py
@@ -304,7 +304,7 @@ tree
 
 +++
 
-<div><img src="./assets/md/assets/img/bring-your-own.gif" class="meme"/></div>
+<div><img src="./assets/gifs/bring-your-own.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Bring Your Own
 #### debug: var=callback_plugins
@@ -326,7 +326,7 @@ callback_plugins=~/.ansible/plugins/callback:/usr/share/ansible/plugins/callback
 
 +++
 
-<div><img src="./assets/md/assets/img/loaded-when.gif" class="meme"/></div>
+<div><img src="./assets/gifs/loaded-when.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Loaded When?
 #### debug: msg='Callback Loaded'<br/>when: CALLBACK_TYPE == 'stdout'
@@ -348,7 +348,7 @@ callback_whitelist=timer,tree
 
 ---
 
-<div><img src="./assets/md/assets/img/playbooks-plays-tasks.gif" class="meme" style="top: 100px;"/></div>
+<div><img src="./assets/gifs/playbooks-plays-tasks.gif" class="meme" style="top: 100px;"/></div>
 
 ### <span class="yaml-dash">-</span>name: Playbooks, Plays & Tasks
 #### hosts: Demo Callback Plugin
@@ -356,7 +356,7 @@ callback_whitelist=timer,tree
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-start.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-start.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Per Playbook
 #### `debug: var=v2_playbook_on_start`
@@ -384,7 +384,7 @@ callback_whitelist=timer,tree
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-on-vars-prompt.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-on-vars-prompt.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Prompts
 #### debug: ><br/>&nbsp;&nbsp;var=`v2_playbook_on_vars_prompt`
@@ -409,7 +409,7 @@ callback_whitelist=timer,tree
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-include.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-include.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Includes<sup>*</sup>
 #### debug: var=v2_playbook_on_include
@@ -440,7 +440,7 @@ callback_whitelist=timer,tree
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-play.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-play.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Per Play
 #### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_play_start
@@ -471,7 +471,7 @@ callback_whitelist=timer,tree
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-task.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-task.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Per Task
 #### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_task_start
@@ -479,6 +479,7 @@ callback_whitelist=timer,tree
 <div class="fragment">
 <pre><code class="python">def v2_playbook_on_task_start(self, task, is_conditional):
     playbook, play = self.playbook, self.play
+    self.task = task
     name, action = task.name or task.get_name(), task.action
     path = task.get_path()
     no_log = task.no_log
@@ -501,7 +502,7 @@ task path: demo.yml:9</code></pre>
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-handler.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-handler.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Handlers
 #### debug: ><br/>&nbsp;&nbsp;var=`v2_playbook_on_handler_task_start`
@@ -519,7 +520,7 @@ task path: demo.yml:9</code></pre>
 
 +++
 
-<div><img src="./assets/md/assets/img/no-hosts-matched.gif" class="meme"/></div>
+<div><img src="./assets/gifs/no-hosts-matched.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: No Hosts Matched
 #### debug: ><br/><br/>&nbsp;&nbsp;var=`v2_playbook_on_no_hosts_matched`
@@ -537,7 +538,7 @@ task path: demo.yml:9</code></pre>
 
 +++
 
-<div><img src="./assets/md/assets/img/no-hosts-remaining.gif" class="meme"/></div>
+<div><img src="./assets/gifs/no-hosts-remaining.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: No Hosts Remaining
 #### debug: ><br/>&nbsp;&nbsp;var=v2_playbook_on_no_hosts_remaining
@@ -555,7 +556,7 @@ task path: demo.yml:9</code></pre>
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-stats.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-stats.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Stats
 #### debug: var=v2_playbook_on_stats
@@ -588,14 +589,14 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<div><img src="./assets/md/assets/img/playbook-never.gif" class="meme"/></div>
+<div><img src="./assets/gifs/playbook-never.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Never Called
 #### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_notify`<br/>&nbsp;&nbsp;-&nbsp;`v2_playbook_on_cleanup_task_start`
 
 ---
 
-<div><img src="./assets/md/assets/img/runner-events.gif" class="meme"/></div>
+<div><img src="./assets/gifs/runner-events.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Runner Events
 #### hosts: Demo Callback Plugin
@@ -603,59 +604,147 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<img src="./assets/md/assets/img/runner-ok.gif" class="meme"/>
+<div><img src="./assets/gifs/runner-ok.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: OK
-#### debug: var=`ok_task`
+#### debug: var=`v2_runner_on_ok`
 
-<pre><code class="yaml hljs">- command: uptime</code></pre>
+<pre><code class="python">def v2_runner_on_ok(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    host = result._host
+    hostname = result._host.get_name()
+    remote_addr = result._host.address
+    res = result._result
+    event_loop = result._task.loop if hasattr(result._task, 'loop') else None
+</code></pre>
 
 <div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=ok_stdout</h4>
-<pre><code class="hljs">
-  ok: [me] => </code><code class="json hljs">{"changed": false, "cmd": ["uptime"], "delta": "0:00:00.012216", "end": "2017-08-29 15:18:07.139319", "rc": 0, "start": "2017-08-29 15:18:07.127103", "stderr": "", "stderr_lines": [], "stdout": "15:18  up 7 days, 23:02, 12 users, load averages: 2.51 2.22 2.27", "stdout_lines": ["15:18  up 7 days, 23:02, 12 users, load averages: 2.51 2.22 2.27"]}
+<h4><span class="yaml-dash">-</span>debug: var=ok_stdout (-vv)</h4>
+<pre><code class="nohighlight">ok: [host] => {"changed": false, "cmd": ["uptime"], "delta": "0:00:00.011449", "end": "2017-09-07 02:43:31.610607", "rc": 0, "start": "2017-09-07 02:43:31.599158", "stderr": "", "stderr_lines": [], "stdout": " 2:43  up 5 days, 11:19, 7 users, load averages: 1.98 1.89 1.94", "stdout_lines": [" 2:43  up 5 days, 11:19, 7 users, load averages: 1.98 1.89 1.94"]}
 </code></pre>
 </div>
 
 <div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=v2_runner_on_ok</h4>
-<pre><code class="lang-python hljs">    def v2_runner_on_ok(self, result):
-        filename = getattr(playbook, '_file_name', '???')
+<h4><span class="yaml-dash">-</span>debug: var=ok_task</h4>
+<pre><code class="yaml">- command: uptime
+  changed_when: false
 </code></pre>
 </div>
 
 +++
+
+<div><img src="./assets/gifs/runner-ok.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: OK
+#### debug: var=`result`
+
+<div class="">
+<pre><code class="nohighlight">&lt;ansible.executor.task_result.TaskResult object&gt;</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=result._result</h4>
+<pre><code class="json">{
+    "_ansible_no_log": false,
+    "_ansible_parsed": true,
+    "changed": false,
+    "cmd": [
+        "uptime"
+    ],
+    "delta": "0:00:00.014762",
+    "end": "2017-09-07 02:53:26.721913",
+    "invocation": {
+        "module_args": {
+            "_raw_params": "uptime",
+            "_uses_shell": false,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "warn": true
+        }
+    },
+    "rc": 0,
+    "start": "2017-09-07 02:53:26.707151",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": " 2:53  up 5 days, 11:29, 7 users, load averages: 2.33 2.33 2.15",
+    "stdout_lines": [
+        " 2:53  up 5 days, 11:29, 7 users, load averages: 2.33 2.33 2.15"
+    ]
+}
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/gifs/runner-failed.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Failed
-#### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_failed`
+#### debug: var=`v2_runner_on_failed`
 
-```python
-    def v2_runner_on_failed(self, result):
-        filename = getattr(playbook, '_file_name', '???')
-```
+<div style="margin-top: 1em;">
+<pre><code class="python">def v2_runner_on_failed(self, result, ignore_errors=False):
+    playbook, play, task = self.playbook, self.play, self.task
+    ...
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=failed_stdout (-vv)</h4>
+<pre><code class="nohighlight">fatal: [me]: FAILED! => {"changed": false, "failed": true, "failed_when_result": true, "ping": "pong"}
+...ignoring
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=failed_task</h4>
+<pre><code class="yaml">- action: ping
+  failed_when: true
+  ignore_errors: true
+</code></pre>
+</div>
 
 +++
 
-<img src="./assets/md/assets/img/runner-skipped.gif" class="meme"/>
+<div><img src="./assets/gifs/runner-skipped.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Skipped
-#### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_skipped`
+#### debug: var=`v2_runner_on_skipped`
 
-```python
-    def v2_runner_on_skipped(self, result):
-        filename = getattr(playbook, '_file_name', '???')
-```
+<pre><code class="python">def v2_runner_on_skipped(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    ...
+</code></pre>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=failed_stdout (-vv)</h4>
+<pre><code class="nohighlight">fatal: [me]: FAILED! => {"changed": false, "failed": true, "failed_when_result": true, "ping": "pong"}
+...ignoring
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=failed_task</h4>
+<pre><code class="yaml">- action: ping
+  failed_when: true
+  ignore_errors: true
+</code></pre>
+</div>
 
 +++
 
-<img src="./assets/md/assets/img/runner-unreachable.gif" class="meme"/>
+<img src="./assets/gifs/runner-unreachable.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Unreachable
 #### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_unreachable`
 
+<pre><code class="nohighlight">fatal: [i]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 127.0.0.1 port 22: Connection refused\r\n", "unreachable": true}
+</code></pre>
+
 +++
 
-<img src="./assets/md/assets/img/runner-item-ok.gif" class="meme"/>
+<img src="./assets/gifs/runner-item-ok.gif" class="meme"/>
 
 ### <span class="yaml-dash">-</span>name: Item OK
 #### debug: var=`v2_runner_item_on_ok`
@@ -677,14 +766,19 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<div><img src="./assets/md/assets/img/runner-never.gif" class="meme"/></div>
+### <span class="yaml-dash">-</span>name: Retry
+#### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_retry`
+
++++
+
+<div><img src="./assets/gifs/runner-never.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Never Called
 #### debug: var={{item}}<br/>when: false<br/>`with_items`:<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_poll`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_ok`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_async_failed`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_file_diff`<br/>&nbsp;&nbsp;-&nbsp;`v2_runner_on_no_hosts`
 
 ---
 
-<div><img src="./assets/md/assets/img/what-about.gif" class="meme"/></div>
+<div><img src="./assets/gifs/what-about.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: What About?
 #### hosts: Demo Callback Plugin
@@ -692,10 +786,39 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-### <span class="yaml-dash">-</span>name: Capturing Stdout
-#### debug: var=ansible.utils.display.Display
+<div><img src="./assets/gifs/capture-stdout.gif" class="meme"/></div>
 
-<div class="fragment" style="margin-top: 1em;">
+### <span class="yaml-dash">-</span>name: Capturing Stdout
+#### debug: var=capture_event_data
+
+<div class="fragment">
+<pre><code class="python">with self.capture_event_data('v2_runner_on_ok', **event_data):
+    super(CallbackModule, self).v2_runner_on_ok(result)
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=mark_begin</h4>
+<pre><code class="python">def mark_begin(fileobj, event_uuid):
+    b64data = base64.b64encode(json.dumps({'uuid': event_uuid}))
+    fileobj.write(u'\x1b[K{}\x1b[{}D\x1b[K'.format(b64data, len(b64data)))
+</code></pre>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=mark_end</h4>
+<pre><code class="python">def mark_end(fileobj):
+    b64data = base64.b64encode(json.dumps({}))
+    fileobj.write(u'\x1b[K{}\x1b[{}D\x1b[K'.format(b64data, len(b64data)))
+</code></pre>
+
++++
+
+<div><img src="./assets/gifs/capture-stdout.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Capturing Stdout
+#### debug: ><br/>&nbsp;&nbsp;var=ansible.utils.display.Display
+
+<div class="fragment">
 <pre><code class="python">class Display:
 
     def display(self, msg, color=None, stderr=False, screen_only=False, log_only=False):
@@ -711,22 +834,16 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<div><img src="./assets/md/assets/img/no-log.gif" class="meme"/></div>
-
+<div><img src="./assets/gifs/no-log.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: My ⨍®𝒾¢₭ℹ︎ℵ§ Passwords
 
 
 
-+++
-
-### <span class="yaml-dash">-</span>name: On Task Stop
-
-
 
 ---
 
-<div><img src="./assets/md/assets/img/what-next.gif" class="meme"/></div>
+<div><img src="./assets/gifs/what-next.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: What Next?
 #### hosts: You
@@ -741,7 +858,7 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<div><img src="./assets/md/assets/img/fixme.gif" class="meme"/></div>
+<div><img src="./assets/gifs/fixme.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: FIXME
 #### command: ><br>&nbsp;&nbsp;grep -hir fixme<br/>&nbsp;&nbsp;awx/lib/awx_display_callback/
@@ -762,7 +879,7 @@ this feature." @bcoca</blockquote>
 
 +++
 
-<div><img src="./assets/md/assets/img/questions.gif" class="meme"/></div>
+<div><img src="./assets/gifs/questions.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: That's All!
 #### pause:<br/>&nbsp;&nbsp;prompt: Any questions?

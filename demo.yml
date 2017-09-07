@@ -22,10 +22,15 @@
       when: false
       with_items:
         - v2_runner_on_no_hosts
+        - v2_runner_on_async_poll
 
     - name: a task
       command: uptime
       changed_when: false
+    - name: a failed task
+      action: ping
+      failed_when: true
+      ignore_errors: true
     - name: a task that triggers a handler
       command: uname -a
       notify: demo handler

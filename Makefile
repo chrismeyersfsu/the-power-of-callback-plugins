@@ -21,12 +21,15 @@ PITCHME/index.html: PITCHME.zip
 	test -f PITCHME/index.html || unzip -o PITCHME.zip
 
 PITCHME/assets/md/README.md: PITCHME/index.html
-	test -L PITCHME/assets/md || (rm -rf PITCHME/assets/md && ln -s ../.. PITCHME/assets/md)	
+	test -L PITCHME/assets/md || (rm -rf PITCHME/assets/md && ln -s ../.. PITCHME/assets/md)
+
+PITCHME/assets/gifs/callback-boy.gif: PITCHME/index.html
+	test -L PITCHME/assets/gifs || (rm -rf PITCHME/assets/gifs && ln -s ../../assets/gifs PITCHME/assets/gifs)
 
 offline: PITCHME/index.html
 	cd PITCHME && python -m SimpleHTTPServer 8059
 
-offline-edit: PITCHME/assets/md/README.md
+offline-edit: PITCHME/assets/md/README.md PITCHME/assets/gifs/callback-boy.gif
 	cd PITCHME && python -m SimpleHTTPServer 8059
 
 offline-clean:

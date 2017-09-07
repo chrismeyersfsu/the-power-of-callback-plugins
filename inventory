@@ -3,7 +3,7 @@
 [local]
 me
 myself
-i
+i ansible_connection=ssh ansible_host=127.0.0.1 ansible_port=122
 
 [local:vars]
 ansible_connection=local
