@@ -27,6 +27,9 @@
     - name: a task
       command: uptime
       changed_when: false
+    - name: a skipped task
+      command: whoami
+      when: false
     - name: a failed task
       action: ping
       failed_when: true
@@ -40,6 +43,25 @@
         - '{{demo_var}}'
         - '{{demo_var_from_file}}'
         #- '{{demo_var_from_prompt}}'
+    - name: a task with failed items
+      debug:
+        msg: '{{item}}'
+      with_items: [one, two, three]
+      failed_when: true
+      ignore_errors: true
+    - name: task with retries
+      shell: echo $(((RANDOM % 10) + 1))
+      register: random_result
+      changed_when: false
+      until: random_result.stdout == "1"
+      retries: 99
+      delay: 1
+      tags: retry
+    - name: test diff
+      copy:
+        content: '{{lookup("pipe", "date")}}'
+        dest: /tmp/{{inventory_hostname}}
+      tags: diff
   roles:
     - role: demo
   handlers:

@@ -329,6 +329,7 @@ class CallbackModule(CallbackBase):
         self.capture_event_data('v2_on_file_diff', event_data)
 
     def v2_runner_item_on_ok(self, result):
+        
         event_data = dict(
             host=result._host.get_name(),
             #task=result._task,

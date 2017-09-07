@@ -36,141 +36,6 @@ Note:
 
 ---
 
-<img src="./assets/gifs/tower-fall.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: How Tower Runs a Job
-#### hosts: Ansible Tower
-#### tasks: ...
-
-<!--  <img src="./assets/gifs/awx-logo.svg" style="border: none; box-shadow: none; width: 50%;"/> -->
-
-Note:
-
-+++
-
-<img src="./assets/gifs/templates-ui.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Job Templates UI
-#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/templates/job_template/N](https://tower/#/templates/job_template/1)
-
-<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/#/templates/job_template/80"></iframe>
-
-+++
-
-<img src="./assets/gifs/templates-api.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Job Templates API
-#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/job_templates/N/](https://tower/api/v1/job_templates/1/)
-
-<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/job_templates/80/"></iframe>
-
-+++
-
-<img src="./assets/gifs/ansible-help.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Playbook Options
-#### command: ansible-playbook --help
-
-<pre class="fragment" style="font-size: 0.4em; margin-top: 5em;"><code class="console">
-Usage: ansible-playbook playbook.yml
-
-Options:
-  --ask-become-pass     ask for privilege escalation password
-  -k, --ask-pass        ask for SSH password
-  --ask-su-pass         ask for su password (deprecated, use become)
-  -K, --ask-sudo-pass   ask for sudo password (deprecated, use become)
-  --ask-vault-pass      ask for vault password
-  -b, --become          run operations with become (nopasswd implied)
-  --become-method=BECOME_METHOD
-                        privilege escalation method to use (default=sudo),
-                        valid choices: [ sudo | su | pbrun | pfexec | runas ]
-  --become-user=BECOME_USER
-                        run operations as this user (default=None)
-  -C, --check           don't make any changes; instead, try to predict some
-                        of the changes that may occur
-  -c CONNECTION, --connection=CONNECTION
-                        connection type to use (default=smart)
-  -D, --diff            when changing (small) files and templates, show the
-                        differences in those files; works great with --check
-  -e EXTRA_VARS, --extra-vars=EXTRA_VARS
-                        set additional variables as key=value or YAML/JSON
-  --flush-cache         clear the fact cache
-  --force-handlers      run handlers even if a task fails
-  -f FORKS, --forks=FORKS
-                        specify number of parallel processes to use
-                        (default=5)
-  -h, --help            show this help message and exit
-  -i INVENTORY, --inventory-file=INVENTORY
-                        specify inventory host file
-                        (default=/etc/ansible/hosts)
-  -l SUBSET, --limit=SUBSET
-                        further limit selected hosts to an additional pattern
-  --list-hosts          outputs a list of matching hosts; does not execute
-                        anything else
-  --list-tags           list all available tags
-  --list-tasks          list all tasks that would be executed
-  -M MODULE_PATH, --module-path=MODULE_PATH
-                        specify path(s) to module library (default=None)
-  --private-key=PRIVATE_KEY_FILE
-                        use this file to authenticate the connection
-  --skip-tags=SKIP_TAGS
-                        only run plays and tasks whose tags do not match these
-                        values
-  --start-at-task=START_AT
-                        start the playbook at the task matching this name
-  --step                one-step-at-a-time: confirm each task before running
-  -S, --su              run operations with su (deprecated, use become)
-  -R SU_USER, --su-user=SU_USER
-                        run operations with su as this user (default=root)
-                        (deprecated, use become)
-  -s, --sudo            run operations with sudo (nopasswd) (deprecated, use
-                        become)
-  -U SUDO_USER, --sudo-user=SUDO_USER
-                        desired sudo user (default=root) (deprecated, use
-                        become)
-  --syntax-check        perform a syntax check on the playbook, but do not
-                        execute it
-  -t TAGS, --tags=TAGS  only run plays and tasks tagged with these values
-  -T TIMEOUT, --timeout=TIMEOUT
-                        override the SSH timeout in seconds (default=10)
-  -u REMOTE_USER, --user=REMOTE_USER
-                        connect as this user (default=chris)
-  --vault-password-file=VAULT_PASSWORD_FILE
-                        vault password file
-  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
-                        connection debugging)
-  --version             show program's version number and exit
-</code></pre>
-
-+++
-
-<img src="./assets/gifs/launch-job.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Launch a Job
-#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/jobs/N](https://tower/#/jobs/1)
-
-<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/#/templates?template_search=id__icontains_DEFAULT:80"></iframe>
-
-+++
-
-<img src="./assets/gifs/jobs-api.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Jobs API
-#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/](https://tower/api/v1/jobs/1/)
-
-<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/jobs/?order_by=-id"></iframe>
-
-+++
-
-<img src="./assets/gifs/job-events-api.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Job Events API
-#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/job_events/](https://tower/api/v1/jobs/1/job_events/)
-
-<iframe class="fragment" x-src="https://tower.ninemoreminutes.com/api/v1/jobs/?order_by=-id"></iframe>
-
----
-
 <img src="./assets/gifs/what-is.gif" class="meme" style="top: 100px;"/>
 
 ### <span class="yaml-dash">-</span>name: What *IS* a Callback Plugin?
@@ -227,10 +92,10 @@ vars
 
 <pre class="fragment"><code class="python hljs">class CallbackBase:
 
-    CALLBACK_VERSION: '2.0'
-    CALLBACK_TYPE: 'notification'
-    CALLBACK_NAME: 'myplugin'
-    CALLBACK_NEEDS_WHITELIST: True
+    CALLBACK_VERSION = '2.0'
+    CALLBACK_TYPE = 'notification'
+    CALLBACK_NAME = 'myplugin'
+    CALLBACK_NEEDS_WHITELIST = True
 
 </code><code class="fragment python hljs">    def v2_on_any(self, *args, **kwargs):
         pass
@@ -435,7 +300,7 @@ callback_whitelist=timer,tree
 </div>
 
 <div class="fragment">
-<h4><span class="yaml-dash">-</span>set_fact: actually_called=rarely<sup>*</sup><br/>when: tbd</h4>
+<h4><span class="yaml-dash">-</span>set_fact: actually_called=rarely<sup>*</sup></h4>
 </div>
 
 +++
@@ -609,6 +474,7 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 ### <span class="yaml-dash">-</span>name: OK
 #### debug: var=`v2_runner_on_ok`
 
+<div class="fragment">
 <pre><code class="python">def v2_runner_on_ok(self, result):
     playbook, play, task = self.playbook, self.play, self.task
     host = result._host
@@ -617,6 +483,7 @@ host    : ok=22    changed=4    unreachable=0    failed=0
     res = result._result
     event_loop = result._task.loop if hasattr(result._task, 'loop') else None
 </code></pre>
+</div>
 
 <div class="fragment">
 <h4><span class="yaml-dash">-</span>debug: var=ok_stdout (-vv)</h4>
@@ -638,7 +505,7 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 ### <span class="yaml-dash">-</span>name: OK
 #### debug: var=`result`
 
-<div class="">
+<div class="fragment">
 <pre><code class="nohighlight">&lt;ansible.executor.task_result.TaskResult object&gt;</code></pre>
 </div>
 
@@ -683,7 +550,7 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 ### <span class="yaml-dash">-</span>name: Failed
 #### debug: var=`v2_runner_on_failed`
 
-<div style="margin-top: 1em;">
+<div class="fragment" style="margin-top: 1em;">
 <pre><code class="python">def v2_runner_on_failed(self, result, ignore_errors=False):
     playbook, play, task = self.playbook, self.play, self.task
     ...
@@ -712,21 +579,101 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 ### <span class="yaml-dash">-</span>name: Skipped
 #### debug: var=`v2_runner_on_skipped`
 
+<div class="fragment">
 <pre><code class="python">def v2_runner_on_skipped(self, result):
     playbook, play, task = self.playbook, self.play, self.task
+    skip_reason = result._result.get('skip_reason')
     ...
-</code></pre>
-
-<div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=failed_stdout (-vv)</h4>
-<pre><code class="nohighlight">fatal: [me]: FAILED! => {"changed": false, "failed": true, "failed_when_result": true, "ping": "pong"}
-...ignoring
 </code></pre>
 </div>
 
 <div class="fragment">
-<h4><span class="yaml-dash">-</span>debug: var=failed_task</h4>
+<h4><span class="yaml-dash">-</span>debug: var=skipped_stdout (-vv)</h4>
+<pre><code class="nohighlight">skipping: [host] => {"changed": false, "skip_reason": "Conditional result was False", "skipped": true}
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=skipped_task</h4>
 <pre><code class="yaml">- action: ping
+  when: false
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/gifs/runner-unreachable.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Unreachable
+#### debug: var=`v2_runner_on_unreachable`
+
+<div class="fragment">
+<pre><code class="python">def v2_runner_on_unreachable(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    msg = result._result.get('msg')
+    ...
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=skipped_stdout (-vv)</h4>
+<pre><code class="nohighlight">fatal: [host]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 127.0.0.1 port 22: Connection refused\r\n", "unreachable": true}
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/gifs/runner-item-ok.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Item OK
+#### debug: var=`v2_runner_item_on_ok`
+
+<div class="fragment">
+<pre><code class="python">def v2_runner_item_on_ok(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    item = result._result.get('item')
+    ...
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_ok_stdout (-vv)</h4>
+<pre><code class="nohighlight">changed: [host] => (item=True) => {"changed": true, "cmd": ["echo", "True"], "delta": "0:00:00.009627", "end": "2017-09-07 09:01:25.905027", "item": true, "rc": 0, "start": "2017-09-07 09:01:25.895400", "stderr": "", "stderr_lines": [], "stdout": "True", "stdout_lines": ["True"]}
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_ok_task</h4>
+<pre><code class="yaml">- debug: msg='{{item}}'
+  with_items: [one, two, three]
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/gifs/runner-item-failed.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Item Failed
+#### debug: var=`v2_runner_item_on_failed`
+
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">def v2_runner_item_on_failed(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    item = result._result.get('item')
+    ...
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_failed_stdout (-vv)</h4>
+<pre><code class="nohighlight">failed: [host] (item=one) => {"failed": true, "failed_when_result": true, "item": "one", "msg": "one"}
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_failed_task</h4>
+<pre><code class="yaml">- debug: msg='{{item}}'
+  with_items: [one, two, three]
   failed_when: true
   ignore_errors: true
 </code></pre>
@@ -734,40 +681,115 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 
 +++
 
-<img src="./assets/gifs/runner-unreachable.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Unreachable
-#### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_unreachable`
-
-<pre><code class="nohighlight">fatal: [i]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 127.0.0.1 port 22: Connection refused\r\n", "unreachable": true}
-</code></pre>
-
-+++
-
-<img src="./assets/gifs/runner-item-ok.gif" class="meme"/>
-
-### <span class="yaml-dash">-</span>name: Item OK
-#### debug: var=`v2_runner_item_on_ok`
-
-+++
-
-### <span class="yaml-dash">-</span>name: Item Failed
-#### debug: var=`v2_runner_item_on_failed`
-
-+++
+<div><img src="./assets/gifs/runner-item-skipped.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: Item Skipped
 #### debug: var=`v2_runner_item_on_skipped`
 
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">def v2_runner_item_on_skipped(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    item = result._result.get('item')
+    ...
+</code></pre>
+<div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_skipped_stdout (-vv)</h4>
+<pre><code class="nohighlight">skipping: [host] => (item=one) => {"changed": false, "item": "one", "skip_reason": "Conditional result was False", "skipped": true}
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=item_skipped_task</h4>
+<pre><code class="yaml">- debug: msg='{{item}}'
+  with_items: [one, two, three]
+  when: false
+</code></pre>
+</div>
+
 +++
+
+<div><img src="./assets/gifs/file-diff.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: File Diff
-#### debug:<br/>&nbsp;&nbsp;var: `v2_on_file_diff`
+#### debug: var=`v2_on_file_diff`
+
+<div class="fragment">
+<pre><code class="python">def v2_on_file_diff(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    diff = result._result.get('diff') or {}
+    before_header = diff.get('before_header', '')
+    before = diff.get('before', '')
+    after_header = diff.get('after_header', '')
+    after = diff.get('after', '')
+    ...
+</code></pre>
+<div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=diff_stdout (-vv)</h4>
+<pre><code class="nohighlight">--- before: /tmp/myself
++++ after: /var/folders/d9/6l0j02nx09g5h05pjgbphvqh0000gn/T/tmpLzY3YX
+@@ -1 +1 @@
+-Thu Sep  7 09:59:50 PDT 2017
++Thu Sep  7 10:00:11 PDT 2017
+</code></pre>
+</div>
 
 +++
 
+<div><img src="./assets/gifs/file-diff.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: File Diff
+#### debug: var=`diff_task`
+
+<div class="fragment">
+<pre><code class="yaml">- copy:
+    content: '{{lookup("pipe", "date")}}'
+    dest: '/tmp/{{inventory_hostname}}'
+</code></pre>
+</div>
+
+<div class="fragment">
+<p>--diff or ANSIBLE_DIFF_ALWAYS or ansible.cfg:</p>
+
+<pre><code class="ini">[diff]
+always=true
+</code></pre>
+</div>
+
++++
+
+<div><img src="./assets/gifs/runner-retry.gif" class="meme"/></div>
+
 ### <span class="yaml-dash">-</span>name: Retry
-#### debug:<br/>&nbsp;&nbsp;var: `v2_runner_on_retry`
+#### debug: var=`v2_runner_on_retry`
+
+<div class="fragment">
+<pre><code class="python">def v2_runner_on_retry(self, result):
+    playbook, play, task = self.playbook, self.play, self.task
+    retries = result._result.get('retries')
+    attempts = result._result.get('attempts')
+    ...
+</code></pre>
+<div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=retry_stdout (-vv)</h4>
+<pre><code class="nohighlight">FAILED - RETRYING: my task (99 retries left).
+</code></pre>
+</div>
+
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=retry_task</h4>
+<pre><code class="yaml">- shell: echo $(((RANDOM % 10) + 1))
+  register: random_result
+  until: random_result.stdout == "1"
+  retries: 99
+  delay: 1
+</code></pre>
+</div>
 
 +++
 
@@ -837,9 +859,171 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 <div><img src="./assets/gifs/no-log.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: My ⨍®𝒾¢₭ℹ︎ℵ§ Passwords
+#### debug: var=task.no_log
 
+<div class="fragment" style="margin-top: 1em;">
+<pre><code class="python">if task.no_log:
+    task_args = 'NO LOG'
+else:
+    task_args = ', '.join(('%s=%s' % a for a in task.args.items()))
+</code></pre>
+</div>
 
+<div class="fragment">
+<h4><span class="yaml-dash">-</span>debug: var=_ansible_no_log</h4>
+<pre><code class="python">if res.get('_ansible_no_log', False):
+    res = {'censored': 'CENSORED'}
+if res.get('results', []):
+    res['results'] = copy(res['results'])
+for i, item in enumerate(res.get('results', [])):
+    if isinstance(item, dict) and item.get('_ansible_no_log', False):
+        res['results'][i] = {'censored': 'CENSORED'}
+</code></pre>
 
++++
+
+<div><img src="./assets/gifs/callback-exceptions.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Callback Exceptions
+
+<div class="fragment" style="margin-top: 4em;">
+<p>ANSIBLE_DEBUG or ansible.cfg:</p>
+
+<pre><code class="ini">[defaults]
+debug=true
+</code></pre>
+</div>
+
+---
+
+<div><img src="./assets/gifs/tower-fall.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: How Tower Runs a Job
+#### hosts: Ansible Tower
+#### tasks: ...
+
++++
+
+<div><img src="./assets/gifs/ansible-help.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Playbook Options
+#### command: ansible-playbook --help
+
+<pre class="fragment" style="font-size: 0.4em; margin-top: 5em;"><code class="console">
+Usage: ansible-playbook playbook.yml
+
+Options:
+  --ask-become-pass     ask for privilege escalation password
+  -k, --ask-pass        ask for SSH password
+  --ask-su-pass         ask for su password (deprecated, use become)
+  -K, --ask-sudo-pass   ask for sudo password (deprecated, use become)
+  --ask-vault-pass      ask for vault password
+  -b, --become          run operations with become (nopasswd implied)
+  --become-method=BECOME_METHOD
+                        privilege escalation method to use (default=sudo),
+                        valid choices: [ sudo | su | pbrun | pfexec | runas ]
+  --become-user=BECOME_USER
+                        run operations as this user (default=None)
+  -C, --check           don't make any changes; instead, try to predict some
+                        of the changes that may occur
+  -c CONNECTION, --connection=CONNECTION
+                        connection type to use (default=smart)
+  -D, --diff            when changing (small) files and templates, show the
+                        differences in those files; works great with --check
+  -e EXTRA_VARS, --extra-vars=EXTRA_VARS
+                        set additional variables as key=value or YAML/JSON
+  --flush-cache         clear the fact cache
+  --force-handlers      run handlers even if a task fails
+  -f FORKS, --forks=FORKS
+                        specify number of parallel processes to use
+                        (default=5)
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory-file=INVENTORY
+                        specify inventory host file
+                        (default=/etc/ansible/hosts)
+  -l SUBSET, --limit=SUBSET
+                        further limit selected hosts to an additional pattern
+  --list-hosts          outputs a list of matching hosts; does not execute
+                        anything else
+  --list-tags           list all available tags
+  --list-tasks          list all tasks that would be executed
+  -M MODULE_PATH, --module-path=MODULE_PATH
+                        specify path(s) to module library (default=None)
+  --private-key=PRIVATE_KEY_FILE
+                        use this file to authenticate the connection
+  --skip-tags=SKIP_TAGS
+                        only run plays and tasks whose tags do not match these
+                        values
+  --start-at-task=START_AT
+                        start the playbook at the task matching this name
+  --step                one-step-at-a-time: confirm each task before running
+  -S, --su              run operations with su (deprecated, use become)
+  -R SU_USER, --su-user=SU_USER
+                        run operations with su as this user (default=root)
+                        (deprecated, use become)
+  -s, --sudo            run operations with sudo (nopasswd) (deprecated, use
+                        become)
+  -U SUDO_USER, --sudo-user=SUDO_USER
+                        desired sudo user (default=root) (deprecated, use
+                        become)
+  --syntax-check        perform a syntax check on the playbook, but do not
+                        execute it
+  -t TAGS, --tags=TAGS  only run plays and tasks tagged with these values
+  -T TIMEOUT, --timeout=TIMEOUT
+                        override the SSH timeout in seconds (default=10)
+  -u REMOTE_USER, --user=REMOTE_USER
+                        connect as this user (default=chris)
+  --vault-password-file=VAULT_PASSWORD_FILE
+                        vault password file
+  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
+                        connection debugging)
+  --version             show program's version number and exit
+</code></pre>
+
++++
+
+<div><img src="./assets/gifs/templates-api.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Job Templates API
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/job_templates/N/](https://tower/api/v1/job_templates/1/)
+
+<iframe class="fragment" src="https://localhost:8043/api/v1/job_templates/5/"></iframe>
+
++++
+
+<div><img src="./assets/gifs/templates-ui.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Job Templates UI
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/templates/job_template/N](https://tower/#/templates/job_template/1)
+
+<iframe class="fragment" src="https://localhost:8043/#/templates/job_template/5"></iframe>
+
++++
+
+<div><img src="./assets/gifs/launch-job.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Launch a Job
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/#/jobs/N](https://tower/#/jobs/1)
+
+<iframe class="fragment" src="https://localhost:8043/#/templates?template_search=id__icontains_DEFAULT:5"></iframe>
+
++++
+
+<div><img src="./assets/gifs/jobs-api.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Jobs API
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/](https://tower/api/v1/jobs/1/)
+
+<iframe class="fragment" src="https://localhost:8043/api/v1/jobs/?order_by=-id"></iframe>
+
++++
+
+<div><img src="./assets/gifs/job-events-api.gif" class="meme"/></div>
+
+### <span class="yaml-dash">-</span>name: Job Events API
+#### `get_url`: <br/>&nbsp;&nbsp;url: [tower/api/v1/jobs/N/job_events/](https://tower/api/v1/jobs/1/job_events/)
+
+<iframe class="fragment" src="https://localhost:8043/api/v1/jobs/?order_by=-id"></iframe>
 
 ---
 
@@ -850,6 +1034,8 @@ host    : ok=22    changed=4    unreachable=0    failed=0
 #### tasks: ...
 
 +++
+
+<div><img src="./assets/gifs/potato.gif" class="meme"/></div>
 
 ### <span class="yaml-dash">-</span>name: AWX
 #### get_url:<br/>&nbsp;&nbsp;url: [github.com/ansible/awx](https://github.com/ansible/awx)
