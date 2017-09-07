@@ -1,4 +1,4 @@
-.reveal h3, .reveal h4, .reveal h5, .reveal p, .reveal ul, .reveal ul li {
+body .reveal h3, body .reveal h4, body .reveal h5, body .reveal p, body .reveal ul, body .reveal ul li {
   font-family: monospace;
   text-transform: none;
   text-align: left;
@@ -6,34 +6,34 @@
   line-height: 1.2em;
   margin-bottom: 16px;
 }
-.reveal h3 {
+body .reveal h3 {
   font-size: 1.08em;
 }
-.reveal h4 {
+body .reveal h4 {
   font-size: 0.84em;
 }
-.reveal h3 .yaml-dash {
+body .reveal h3 .yaml-dash {
   margin-left: -1.08em;
   margin-right: 0.504em;
 }
-.reveal h4 .yaml-dash {
+body .reveal h4 .yaml-dash {
   margin-left: -1.08em;
   margin-right: 0.48em;
 }
-.reveal p, .reveal ul, .reveal ul li {
+body .reveal p, body .reveal ul, body .reveal ul li {
   line-height: 30px;
   font-size: 30px;
 }
-.reveal p {
+body .reveal p {
   line-height: 36px;
 }
-.reveal ul li {
+body .reveal ul li {
   line-height: 28px;
 }
-.reveal .slides {
+body .reveal .slides {
   text-align: left;
 }
-.reveal .slides img.meme {
+body .reveal .slides img.meme {
   position: absolute;
   top: 0;
   right: 0;
@@ -44,7 +44,7 @@
   border-radius: 8px;
   margin: 8px;
 }
-.reveal .slides iframe {
+body .reveal .slides iframe {
   width: 1280px;
   height: 656px;
   max-width: none;
@@ -61,14 +61,14 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.reveal .slides pre code {
+body .reveal .slides pre code {
   color: #c5c8c6;
   background: #1d1f21;
 }
-.reveal .slides sup {
+body .reveal .slides sup {
   font-size: 0.5em;
 }
 
-.reveal .slides {
+body .reveal .slides {
   outline: 1px dotted red;
 }
