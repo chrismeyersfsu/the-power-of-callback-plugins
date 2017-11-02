@@ -1,0 +1,58 @@
+- hosts: local
+  connection: local
+  strategy: free
+  gather_facts: false
+  vars:
+    sleep_time: "`echo $(( RANDOM % (3) + 1 ))`"
+  tasks:
+    - name: Sleep randomly 1
+      shell: "sleep {{ sleep_time }}"
+
+    - name: Just an ls
+      shell: "ls"
+
+    - name: Hello World 1
+      debug:
+        msg: "Hello World 1"
+
+- hosts: local
+  connection: local
+  strategy: free
+  gather_facts: false
+  vars:
+    sleep_time: "`echo $(( RANDOM % (3) + 1 ))`"
+  tasks:
+    - name: Sleep randomly 2
+      shell: "sleep {{ sleep_time }}"
+
+    - name: Hello World 2
+      debug:
+        msg: "Hello World 2"
+
+- hosts: local
+  connection: local
+  strategy: free
+  gather_facts: false
+  vars:
+    sleep_time: "`echo $(( RANDOM % (3) + 1 ))`"
+  tasks:
+    - name: Sleep randomly 3
+      shell: "sleep {{ sleep_time }}"
+
+    - name: Hello World 3
+      debug:
+        msg: "Hello World 3"
+
+- hosts: local
+  connection: local
+  strategy: free
+  gather_facts: false
+  vars:
+    sleep_time: "`echo $(( RANDOM % (3) + 1 ))`"
+  tasks:
+    - name: Sleep randomly 4
+      shell: "sleep {{ sleep_time }}"
+
+    - name: Hello World 4
+      debug:
+        msg: "Hello World 4"
