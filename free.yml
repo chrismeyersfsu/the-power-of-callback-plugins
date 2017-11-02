@@ -1,4 +1,4 @@
-- hosts: local
+- hosts: all
   connection: local
   strategy: free
   gather_facts: false
@@ -15,7 +15,7 @@
       debug:
         msg: "Hello World 1"
 
-- hosts: local
+- hosts: all
   connection: local
   strategy: free
   gather_facts: false
@@ -29,7 +29,7 @@
       debug:
         msg: "Hello World 2"
 
-- hosts: local
+- hosts: all
   connection: local
   strategy: free
   gather_facts: false
@@ -43,7 +43,7 @@
       debug:
         msg: "Hello World 3"
 
-- hosts: local
+- hosts: all
   connection: local
   strategy: free
   gather_facts: false
